@@ -12,21 +12,24 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
-    android:text="@string/capital" />
+    android:text="@string/capital"
+    android:textColor="@color/black" />
 
   <TextView
     android:id="@+id/capitalTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
-    android:layout_toEndOf="@+id/textView1" />
+    android:layout_toEndOf="@+id/textView1"
+    android:textColor="@color/black" />
 
   <TextView
     android:id="@+id/textView2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/textView1"
-    android:text="@string/nombre_pais" />
+    android:text="@string/nombre_pais"
+    android:textColor="@color/black" />
 
   <TextView
     android:id="@+id/nombrePaisTextView"
@@ -34,14 +37,16 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/textView1"
     android:layout_marginStart="10dp"
-    android:layout_toEndOf="@+id/textView2" />
+    android:layout_toEndOf="@+id/textView2"
+    android:textColor="@color/black" />
 
   <TextView
     android:id="@+id/textView3"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/textView2"
-    android:text="@string/nombre_pais_int" />
+    android:text="@string/nombre_pais_int"
+    android:textColor="@color/black" />
 
   <TextView
     android:id="@+id/nombrePaisIntTextView"
@@ -49,14 +54,16 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/textView2"
     android:layout_marginStart="10dp"
-    android:layout_toEndOf="@+id/textView3" />
+    android:layout_toEndOf="@+id/textView3"
+    android:textColor="@color/black" />
 
   <TextView
     android:id="@+id/textView4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/textView3"
-    android:text="@string/sigla" />
+    android:text="@string/sigla"
+    android:textColor="@color/black" />
 
   <TextView
     android:id="@+id/siglaTextView"
@@ -64,6 +71,16 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/textView3"
     android:layout_marginStart="10dp"
-    android:layout_toEndOf="@+id/textView4" />
+    android:layout_toEndOf="@+id/textView4"
+    android:textColor="@color/black" />
 
+  <ImageView
+    android:id="@+id/countryFlagImageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/siglaTextView"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
+    android:scaleType="fitXY"
+    tools:ignore="ContentDescription" />
 </RelativeLayout>

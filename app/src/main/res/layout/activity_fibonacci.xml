@@ -9,14 +9,17 @@
   <ImageButton
     android:id="@+id/fibonacciImageButton"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="0dp"
+    android:layout_weight="0.5"
     android:src="@drawable/fibonacci"
-    tools:ignore="ContentDescription" />
+    tools:ignore="ContentDescription"
+    android:scaleType="fitCenter"
+    />
 
   <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="0dp"
+    android:layout_weight="0.5">
     <TextView
       android:id="@+id/fibonacciTextView"
       android:layout_width="match_parent"

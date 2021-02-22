@@ -2,7 +2,7 @@ package com.example.fibonacciapp;
 
 import java.math.BigInteger;
 
-public class FibonnaciHelper {
+public class FibonacciHelper {
 
   public static BigInteger[] calculateFirstKFibonacci(int k) {
     BigInteger[] f = new BigInteger[k];

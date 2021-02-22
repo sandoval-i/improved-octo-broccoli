@@ -1,22 +1,23 @@
 package com.example.fibonacciapp;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.UiThread;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Calendar;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-  private static final String TAG = "FibonacciApp";
   private static final int SPINNER_SIZE = 15;
   private static final int FIBONACCI_CODE = 0;
   private static final int FACTORIAL_CODE = 1;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
   private TextView fechaFactorialTextView;
   private int contadorFibonacci = 0;
   private int contadorFactorial = 0;
+  private String fechaFibonacci = "-";
+  private String fechaFactorial = "-";
 
   private String getDate() {
     Calendar calendar = Calendar.getInstance();
@@ -36,23 +39,32 @@ public class MainActivity extends AppCompatActivity {
     int year = calendar.get(Calendar.YEAR);
     String month = calendar.getDisplayName(Calendar.MONTH, Calendar.SHORT_FORMAT, l);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
-    int hour = calendar.get(Calendar.HOUR_OF_DAY);
-    int minute = calendar.get(Calendar.MINUTE);
-    return day + "/" + month + "/" + year + " " + hour + ":" + minute;
+    int hours = calendar.get(Calendar.HOUR_OF_DAY);
+    int minutes = calendar.get(Calendar.MINUTE);
+    int seconds = calendar.get(Calendar.SECOND);
+    return day + "/" + month + "/" + year + " " + hours + ":" + minutes + ":" + seconds;
   }
 
   @UiThread
-  public void updateFactorial() {
-    contadorFactorial++;
-    fechaFactorialTextView.setText(getDate());
+  private void updateFields() {
+    fechaFibonnacciTextView.setText(fechaFibonacci);
+    contadorFibonnacciTextView.setText(String.valueOf(contadorFibonacci));
+    fechaFactorialTextView.setText(fechaFactorial);
     contadorFactorialTextView.setText(String.valueOf(contadorFactorial));
   }
 
   @UiThread
-  public void updateFibonacci() {
+  private void updateFactorial() {
+    contadorFactorial++;
+    fechaFactorial = getDate();
+    updateFields();
+  }
+
+  @UiThread
+  private void updateFibonacci() {
     contadorFibonacci++;
-    fechaFibonnacciTextView.setText(getDate());
-    contadorFibonnacciTextView.setText(String.valueOf(contadorFibonacci));
+    fechaFibonacci = getDate();
+    updateFields();
   }
 
   @Override
@@ -103,10 +115,31 @@ public class MainActivity extends AppCompatActivity {
       startActivity(intent);
     });
 
-    contadorFibonnacciTextView.setText("0");
-    fechaFibonnacciTextView.setText("-");
-    contadorFactorialTextView.setText("0");
-    fechaFactorialTextView.setText("-");
+    updateFields();
+  }
+
+  private final String FECHA_FIBONACCI_CODE = "fechaFibonacci";
+  private final String CONTADOR_FIBONACCI_CODE = "contadorFibonacci";
+  private final String FECHA_FACTORIAL_CODE = "fechaFactorial";
+  private final String CONTADOR_FACTORIAL_CODE = "contadorFactorial";
+
+  @Override
+  protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+    super.onRestoreInstanceState(savedInstanceState);
+    fechaFibonacci = savedInstanceState.getString(FECHA_FIBONACCI_CODE);
+    contadorFibonacci = savedInstanceState.getInt(CONTADOR_FIBONACCI_CODE);
+    fechaFactorial = savedInstanceState.getString(FECHA_FACTORIAL_CODE);
+    contadorFactorial = savedInstanceState.getInt(CONTADOR_FACTORIAL_CODE);
+    updateFields();
+  }
+
+  @Override
+  protected void onSaveInstanceState(@NonNull Bundle outState) {
+    super.onSaveInstanceState(outState);
+    outState.putString(FECHA_FIBONACCI_CODE, fechaFibonacci);
+    outState.putInt(CONTADOR_FIBONACCI_CODE, contadorFibonacci);
+    outState.putString(FECHA_FACTORIAL_CODE, fechaFactorial);
+    outState.putInt(CONTADOR_FACTORIAL_CODE, contadorFactorial);
   }
 
   @Override

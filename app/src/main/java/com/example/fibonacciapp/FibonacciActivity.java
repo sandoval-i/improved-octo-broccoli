@@ -25,7 +25,7 @@ public class FibonacciActivity extends AppCompatActivity {
     });
 
     int kFibonacci = getIntent().getIntExtra("posiciones", 0);
-    fibonacciTextView.setText(format(FibonnaciHelper.calculateFirstKFibonacci(kFibonacci)));
+    fibonacciTextView.setText(format(FibonacciHelper.calculateFirstKFibonacci(kFibonacci)));
   }
 
   private String format(BigInteger[] fibo) {

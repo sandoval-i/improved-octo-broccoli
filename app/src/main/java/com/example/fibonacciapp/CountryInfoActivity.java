@@ -1,12 +1,29 @@
 package com.example.fibonacciapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.WorkerThread;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.InputStream;
+import java.net.URL;
+
 public class CountryInfoActivity extends AppCompatActivity {
+
+  @WorkerThread
+  private Drawable getDrawableFromUrl(String url) {
+    try {
+      InputStream is = (InputStream) new URL(url).getContent();
+      return Drawable.createFromStream(is, "");
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -16,9 +33,16 @@ public class CountryInfoActivity extends AppCompatActivity {
     TextView nombrePaisTextView = findViewById(R.id.nombrePaisTextView);
     TextView nombrePaisIntTextView = findViewById(R.id.nombrePaisIntTextView);
     TextView siglaTextView = findViewById(R.id.siglaTextView);
+    ImageView countryFlagImageView = findViewById(R.id.countryFlagImageView);
     capitalTextView.setText(country.getCapital());
     nombrePaisTextView.setText(country.getCountryName());
     nombrePaisIntTextView.setText(country.getCountryNameInt());
     siglaTextView.setText(country.getCountryCode());
+    Thread t = new Thread(() -> {
+      Drawable d = getDrawableFromUrl("https://www.countryflags.io/"
+              + country.getCountryCode() + "/flat/64.png");
+      runOnUiThread(() -> countryFlagImageView.setImageDrawable(d));
+    });
+    t.start();
   }
 }

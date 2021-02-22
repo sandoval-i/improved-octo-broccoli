@@ -1,13 +1,14 @@
 package com.example.fibonacciapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,6 +38,7 @@ public class CountrySelector extends AppCompatActivity {
         }
         Intent intent = new Intent(getBaseContext(), CountryInfoActivity.class);
         intent.putExtra("country", (Country) countrySpinner.getSelectedItem());
+        countrySpinner.setSelection(0);
         startActivity(intent);
       }
 
@@ -44,6 +46,12 @@ public class CountrySelector extends AppCompatActivity {
       public void onNothingSelected(AdapterView<?> parent) {
       }
     });
+  }
+
+  @Override
+  protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+    super.onRestoreInstanceState(savedInstanceState);
+    countrySpinner.setSelection(0);
   }
 
   Country[] loadCountriesFromJSON(String filename) {
@@ -58,7 +66,7 @@ public class CountrySelector extends AppCompatActivity {
       JSONObject jsonObject = new JSONObject(json);
       JSONArray jsonArray = jsonObject.getJSONArray("paises");
       countries = new Country[1 + jsonArray.length()];
-      countries[0] = new Country("", "", "", "");
+      countries[0] = new Country("", "", "-", "");
       for (int i = 0; i < jsonArray.length(); ++i) {
         JSONObject countryObject = jsonArray.getJSONObject(i);
         String capital = countryObject.getString("capital");
