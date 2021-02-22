@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item name="fibonacciButton" type="id" />
+  <item name="factorialButton" type="id" />
+  <item name="paisesButton" type="id" />
+  <item name="posicionesEditText" type="id" />
+  <item name="factorialSpinner" type="id" />
+  <item name="contadorFactorialTextView" type="id" />
+  <item name="fechaFactorialTextView" type="id" />
+  <item name="contadorFibonacciTextView" type="id" />
+  <item name="fechaFibonacciTextView" type="id" />
+</resources>

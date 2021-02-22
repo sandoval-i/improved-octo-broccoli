@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".MainActivity">
+
+  <TextView
+    android:id="@+id/tallerTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerInParent="true"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="100dp"
+    android:text="@string/tallerDefaultText"
+    android:textColor="@color/purple_500"
+    android:textSize="30sp"
+    android:textStyle="bold" />
+
+  <Button
+    android:id="@+id/fibonacciButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/tallerTextView"
+    android:text="@string/fibonacciText"
+    android:textAllCaps="true"
+    android:textSize="30sp" />
+
+  <EditText
+    android:id="@+id/posicionesEditText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/fibonacciButton"
+    android:hint="@string/posicionesHint"
+    android:importantForAutofill="no"
+    android:inputType="number"
+    android:textSize="30sp" />
+
+  <Button
+    android:id="@+id/factorialButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/posicionesEditText"
+    android:text="@string/factorialText"
+    android:textAllCaps="true"
+    android:textSize="30sp" />
+
+  <Spinner
+    android:id="@+id/factorialSpinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/factorialButton" />
+
+  <Button
+    android:id="@+id/paisesButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/factorialSpinner"
+    android:text="@string/paisesText"
+    android:textAllCaps="true"
+    android:textSize="30sp" />
+
+  <TextView
+    android:id="@+id/contador1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/paisesButton"
+    android:layout_marginStart="5dp"
+    android:text="@string/contadorFibonacciText"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/contadorFibonacciTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/paisesButton"
+    android:layout_marginStart="5dp"
+    android:layout_toEndOf="@id/contador1"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/contador2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/contador1"
+    android:layout_marginStart="5dp"
+    android:text="@string/contadorFactorialText"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/contadorFactorialTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/contadorFibonacciTextView"
+    android:layout_marginStart="5dp"
+    android:layout_toEndOf="@id/contador2"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/fecha1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/contador2"
+    android:layout_marginStart="5dp"
+    android:text="@string/fechaFibonacciText"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/fechaFibonacciTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/contadorFactorialTextView"
+    android:layout_marginStart="5dp"
+    android:layout_toEndOf="@id/fecha1"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/fecha2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/fecha1"
+    android:layout_marginStart="5dp"
+    android:text="@string/fechaFactorialText"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/fechaFactorialTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/fechaFibonacciTextView"
+    android:layout_marginStart="5dp"
+    android:layout_toEndOf="@id/fecha2"
+    android:textSize="20sp" />
+</RelativeLayout>
